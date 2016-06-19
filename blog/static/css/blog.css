@@ -1,6 +1,6 @@
 
 	
-/*	.floating-box {
+p.floating-box {
     float: left;
     width: 150px;
     height: 75px;
@@ -10,11 +10,14 @@
 
 .after-box {
     clear: left;
-} */
+} 
 
 h1 {
 	color: blue;
 	text-align: center;	
+	font-style: normal;
+	font-family: 'Calibri';
+	font-size: 90px;
 }
 
 
@@ -23,8 +26,5 @@ body {
 }
 
 
-h1 a {
-    color: #FCA205;
-    font-family: 'Lobster';
-}
+
 
