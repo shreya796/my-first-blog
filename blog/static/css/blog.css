@@ -12,9 +12,19 @@
     clear: left;
 } */
 
-h1{
+h1 {
 	color: blue;
-	text-align:center;
-	
-	
+	text-align: center;	
 }
+
+
+body {
+    padding-left: 15px;
+}
+
+
+h1 a {
+    color: #FCA205;
+    font-family: 'Lobster';
+}
+
