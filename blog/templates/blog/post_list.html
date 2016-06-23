@@ -5,8 +5,10 @@
 	<!__meta charset="utf-8"__>
 
         <title>CodeLand </title>
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		
-	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+			<link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
    
    <body background = "http://www.planwallpaper.com/static/images/518151-backgrounds_W3qVPu2.jpg">
@@ -43,8 +45,40 @@
 		
 		
 		
+	
 		
+		
+		{% for post in posts %}   	<!__ way of writing a for loop in html, posts is the instance created in views.py, post is the variable __>
+			<div>
+			
+			{{ post }}   			<!__post is the instance created in the python shell while publishing the post __>
+		</div>
+		{% endfor %}   				<!__ end of for loop __>
 
+		
+		
+		<!__ by div tag the post names have appeared in separate lines  __>
+		
+	
+
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
     </body>
 </html>
 
