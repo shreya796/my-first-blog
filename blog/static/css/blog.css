@@ -1,3 +1,14 @@
+/*h1.floating-box {
+    float: left;
+    width: 150px;
+    height: 75px;
+    margin: 10px;
+    border: 3px solid blue; 
+        }
+
+.after-box {
+    clear: left;
+} */
 
 title
 {
@@ -25,6 +36,23 @@ video{
 .page-header {
     font-family: 'Lobster';
 }
+
+
+
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+
+
 
 h1 {
 	color: blue;
@@ -60,39 +88,41 @@ table{
     border: outset;
 
 }
+form{
+ 
+}
+#draginto{
+   width: 185px;
+    height:170px;
+    padding-right: 20px;
+   /*float: right;*/
+    background-attachment: fixed;
+    } 
 
 #todrag1{
     height:150px;
     width: 150px;
     float:left;
-}/*this dragimg will get dragged*/
-
-#draginto{
-   width: 200px;
-    height:200px;
-    padding-right: 20px;
-    background-attachment: fixed;
-    } 
-
+}
 
 #todrag2{
     height:130px;
     width: 130px;
     float:left;
-}/*this dragimg will get dragged*/
+}
 
 
 #todrag3{
     height:160px;
     width: 160px;
     float:left;
-}/*this dragimg will get dragged*/
+}
 
 #todrag4{
     height:160px;
     width: 160px;
     float:left;
-}/*this dragimg will get dragged*/
+}
 
 
 
@@ -105,14 +135,71 @@ table{
 }
 
     
-/*h1.floating-box {
-    float: left;
-    width: 150px;
-    height: 75px;
-    margin: 10px;
-    border: 3px solid blue; 
-        }
 
-.after-box {
-    clear: left;
-} */
+/*def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+    if request.method == "POST":
+    form = PostForm(request.POST)
+    else:
+    form = PostForm()
+
+    if form.is_valid():
+    post = form.save(commit=False)
+    post.author = request.user
+    post.published_date = timezone.now()
+    post.save()
+    return redirect('post_detail', pk=post.pk) */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*<script type="text/javascript" src="{{static_url}}js/blog.js">*/
+
+
+
+/*<img class="pic1" 
+src="http://3.imimg.com/data3/LF/QS/MY-2678925/online-shopping-portals-500x500.jpg" alt="ShopWorld"/>*/
+
+
+
+
+/*
+<Table border=2 >
+<tr><th colspan=2>Items available</th></tr>
+<tr><th rowspan=2>men's wear</th></tr>
+<td>Formals</td>
+<tr><th rowspan=2>women's ethnic wear</th></tr>
+<td>kurtis</td>
+<tr><th rowspan=2>women's footwear</th></tr>
+<td>flats/heels</td>
+<tr><th rowspan=2>men's footwear</th></tr>
+<td>sports shoes</td>
+</Table>*/
+
+
+
+
+
+
+/*
+image hyperlink
+<div align="right">
+      <a href = "">
+      <img Id="shop" src=" http://yeahlasvegas.com/wp-content/uploads/2016/06/mandalay-bay-retail-resort-shops-shopping-bags-1-1.jpg" alt= "Shop world">
+      </a>
+      </div>
+
+ */

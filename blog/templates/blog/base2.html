@@ -1,7 +1,6 @@
-{% load staticfiles %}
-<!DOCTYPE html>
 <html>
-    <head>
+<body>
+ <head>
     <meta charset="utf-8" >
     <!__utf a unicode system only eg unicode- giving 4bytes to int in java __>
 
@@ -48,29 +47,6 @@ function msg()
 </head> 
 
 
-<body background="http://webdesignerdepot.s3.amazonaws.com/default-images/26.jpg"> 
-
-
-<div class="page-header">
-
-        <h1><a href="/">Welcome to ShopLand</a></h1>
-        {%if user.is_authenticated%}
-         <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {%endif%}
-
-    </div>
-
-
-        
-<p> <h3 class="tagline">Customer satisfaction is our motto. </h3></p>
-<hr><br>
-
-
-
-<!__use a name attribute in all options which has to be the same, and make one of the values of name checked> <br>
-
-
-
 
 <!__DRAG AND DROP CODE >
 <p style="padding-left: 20px; font-family: 'lobster'; font-size:40px;">Drag the shortlisted items into the cart !</p>
@@ -104,43 +80,5 @@ function msg()
 </div>
 </form>
 
-<br><progress ></progress>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        

@@ -1,149 +1,38 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-    <head>
-	<meta charset="utf-8" >
-	<!__utf a unicode system only eg unicode- giving 4bytes to int in java __>
-
-        <title>ShopLanD</title>
-		<!__ below 2 are the bootstrap references __>
-			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-			<!__imports lobster font from google fonts__>
-			<link  rel="stylesheet" type="text/css"  href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext">  
-		
-<!__CSS link has to come at the end>
-			<link rel="stylesheet" href="{% static 'css/blog.css' %}">  
-
-<script>
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
-</script>
+<!way of writing a for loop in html, posts is the instance created in views.py, post is the variable >
+            
+             <!__to print a variable- this syntax. post is also the instance created in the python shell while publishing the post __>
+        <!__ end of for loop __>
+      
+        <!__ by div tag the post names have appeared in separate lines  __>
+        
+{%extends 'blog/base.html' %}
+<body>
 
 
 
-
-<script type="text/javascript">
-	
-	(function () {
-		var dialog=document.getElementById('dialogue');
-		document.getElementById('show').onclick=function () {
-			dialog.show();
-		};
-		document.getElementById('hide').onclick=function(){
-			dialog.close();
-			};
-		})();
-</script>
-
-
-
-
-
-
-</head> 
-
-
-<body background="http://webdesignerdepot.s3.amazonaws.com/default-images/26.jpg"> 
-
-<div class="page-header">
-   <h1><a href="/">Welcome to ShopLand</a></h1>
-</div>
-			
-<p>	<h3 class="tagline">Customer satisfaction is our motto. </h3></p>
-<hr><br>
-
-
-<!__DRAG AND DROP CODE >
-
-<div align="right">
-<div  ondrop="drop(event)" ondragover="allowDrop(event)"><img id="draginto" src="https://image.freepik.com/free-icon/shopping-cart-of-checkered-design_318-50865.png" />  </div>
-<!__ do not make Id of division, or it will create a block separately using that id styling.Make id of img  ></div>
-
-<p style="padding-left: 20px; font-family: 'lobster'; font-size:40px;">Drag the shortlisted items into the cart !</p>
-<img id="todrag1" src="http://static1.jassets.com/p/Baggit-Gcch-Roxx-Andrew-Smoke-Wallet-7524-5535202-1-catalog_m.jpg" draggable="true" ondragstart="drag(event)">
-<img id="todrag2" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTOF5kMDlEF4ZaeikpWMLYa8L9KPpmmeD1eT5sipta8VECYJZoOaw"  draggable="true" ondragstart="drag(event)">
-
-<img id="todrag3" src="http://cdn.ndtv.com/tech/images/gadgets/asus-zenbook-pro-ux501.jpg"  draggable="true" ondragstart="drag(event)">
-<img id="todrag4" src="http://g04.a.alicdn.com/kf/HTB1eHAIKpXXXXaxXVXXq6xXFXXXX/New-2013-canvas-shoes-lady-canvas-shoes-1908.jpg_350x350.jpg"  draggable="true" ondragstart="drag(event)"  draggable="true" ondragstart="drag(event)">
-
-</img><br><br>
-
-
-
-
-
-
-<div align="right">
-<img class="pic1" src="http://3.imimg.com/data3/LF/QS/MY-2678925/online-shopping-portals-500x500.jpg" alt="ShopWorld" ></img></div>
-		
-		
-
-
-<!__TABLE>	
-		
-		<br>
-<Table border=2 >
-<tr><th colspan=2>Items available</th></tr>
-<tr><th rowspan=2>men's wear</th></tr>
-<td>Formals</td>
-<tr><th rowspan=2>women's ethnic wear</th></tr>
-<td>kurtis</td>
-<tr><th rowspan=2>women's footwear</th></tr>
-<td>flats/heels</td>
-<tr><th rowspan=2>men's footwear</th></tr>
-<td>sports shoes</td>
-</Table>
-
-
-
-<br>
-<label>You are required to fill this form before moving ahead.</label>
-<form>
-<label>Enter your name</label><input type= "text"/><br>
-<label>Enter your password</label><input type= "password"/><br>
-<label>Enter your email ID</label><input type= "text"/><br>
-<label>Enter your phone no</label><input type= "text"/><br>
- <input type ="radio" name="gender" value="male" checked>male</input>
-<input type ="radio" name="gender" value="female" >female</input>
-
-<!__use a name attribute in all options which has to be the same, and make one of the values of name checked> <br>
-
-
-<!__dialogue box>
-<div>
-<dialog id="dialogue" >
-<p>Please check the details carefully before submitting. </p>
-<button id="hide">Submit finally</button>
-</dialog>
-<button id="show" >Submit</button>
-</div>
-</form>
-
-
-<br>
-<progress >
-</progress>
-
-<div align="right">
-	  <a href = "http://www.southjewellery.com/">
-	  <img Id="shop" src=" http://yeahlasvegas.com/wp-content/uploads/2016/06/mandalay-bay-retail-resort-shops-shopping-bags-1-1.jpg" alt= "Shop world">
-	  </a>
-	  </div>
-		
 </body>
-</html>
+
+
+
+
+
+
+
+
+
+{%block content%}
+{% for post in posts %}
+    <div class="post">
+        <div class="date">
+        <p>published: {{ post.published_date }}</p>
+        </div>
+       <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+        <p>{{ post.text|linebreaksbr }}</p>   
+    </div>
+{% endfor %}
+{%endblock%}
+
+<!a href "" is used to print the posttitle in the importd font -here it's lobster>
 
 
 
