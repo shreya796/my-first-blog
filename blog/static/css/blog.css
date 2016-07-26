@@ -33,11 +33,11 @@ img{
     height: 300px;
     width: :300px;
 }
-.pic1{
+/*.pic1{
 
     border: black dotted;
-    /*float:center;*/
-}
+    float:center;
+}*/
 video{
     border: blue dashed;
 }
@@ -73,9 +73,30 @@ h4{
         font-weight: bold;
         font-family: 'Georgia';
         font-style: italic;
-        font-size: 50px;
+        font-size: 40px;
+        text-align: justify;
         /* Css style will overwrite the size h4. Moreover advantage of h4 is we can access the post title */
 }
+
+p{
+    color: brown;
+        font-weight: bold;
+        font-family: 'comic sans Ms';
+        font-style: italic;
+        font-size: 20px;
+        text-align: justify;
+}
+
+
+
+#dragline{
+    padding-left: 20px; 
+    font-family: 'Satisfy';
+     font-size:40px;
+     font-color:magenta;
+     font-style: normal;
+}
+
 
 
 h1 {
@@ -158,6 +179,16 @@ form{
     
 }
 
+
+
+.date{
+    color:orange;
+    font-family:'Calibri'; 
+    font-weight:bold; 
+    font-style:italic;
+    font-size:25px;
+}
+
     
 
 /*def post_new(request):
@@ -227,3 +258,9 @@ image hyperlink
       </div>
 
  */
+
+
+ /*  <div class="date">
+       published: {{ post.published_date }}
+        </div> 
+         <p>{{ post.text|linebreaksbr }}</p>  */

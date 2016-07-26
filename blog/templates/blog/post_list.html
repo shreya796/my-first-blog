@@ -34,7 +34,7 @@
 
 
 <!__DRAG AND DROP CODE >
-<p style="padding-left: 20px; font-family: 'Satisfy'; font-size:40px;">Drag your favorite items into the cart !</p>
+<p id="dragline" >Drag your favorite items into the cart !</p>
 <img id="todrag1" src="http://static1.jassets.com/p/Baggit-Gcch-Roxx-Andrew-Smoke-Wallet-7524-5535202-1-catalog_m.jpg" draggable="true" ondragstart="drag(event)">
 <img id="todrag2" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTOF5kMDlEF4ZaeikpWMLYa8L9KPpmmeD1eT5sipta8VECYJZoOaw"  draggable="true" ondragstart="drag(event)">
 
@@ -77,18 +77,17 @@
 {% for post in posts %}
 <ul style="list-style-type:square;">
     <div class="post">
-        <div class="date">
-       <p>published: {{ post.published_date }}</p>
-        </div>
-      <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
-        <p>{{ post.text|linebreaksbr }}</p>   
+       
+         <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
+      
+    
     </div>
     </ul>
 {% endfor %}
 {%endblock%}
 
 
-
+ 
 
 
 
