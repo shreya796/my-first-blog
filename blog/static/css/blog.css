@@ -61,6 +61,13 @@ video{
     margin-bottom: 70px;
 }
 
+h3.newpost{
+    font-weight: bold;
+        font-family: 'Satisfy';
+        
+
+}
+/*element.class_name  */
 h4{
     color: blue;
         font-weight: bold;

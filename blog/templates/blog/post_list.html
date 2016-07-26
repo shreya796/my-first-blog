@@ -7,6 +7,9 @@
    
 {%extends 'blog/base.html' %}
 
+
+
+
 {%block part%}
 
 <div class="page-header">
@@ -70,17 +73,9 @@
 
 
 
-
-
-
-
-
-
-
-
 {%block content%}
 {% for post in posts %}
-<ul>
+<ul style="list-style-type:square;">
     <div class="post">
         <div class="date">
        <p>published: {{ post.published_date }}</p>
@@ -92,7 +87,7 @@
 {% endfor %}
 {%endblock%}
 
-<!a href "" is used to print the posttitle in the importd font -here it's lobster>
+
 
 
 
