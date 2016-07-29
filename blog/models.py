@@ -1,7 +1,7 @@
+
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
-
-# Create your models here.
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -11,6 +11,13 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
+    #image=models.FileField(null=True, blank=True)
+
+
+    def get_absolute_url(self):
+        return reverse('view:post_detail',kwargs={'pk':self.pk})
+
+
 
     def publish(self):
         self.published_date = timezone.now()

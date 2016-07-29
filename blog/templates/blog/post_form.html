@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{%block title%}Add{%endblock%}
+
+{%block body%}
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12-col-md-7">
+                <div class ="panek panel-default">
+                    <div class="panel-body">
+                        <h3>Add new post </h3>
+                        {%if error_message%}
+                        <p><strong>{{error_message}}</strong></p>
+                        {%endif%}
+
+<!to handle multiple forms-multipart/>
+<form method="post" class="form-horizontal" role="form" action="" enctype="multipart/form-data">{% csrf_token %}
+       <! {{ form.as_p }}>
+     {%include 'blog/form-template.html'%}
+
+        <div class="form-group">
+            <div class="col-sm-offset-2-col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            <!designs a green button>
+            </div>
+                 </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+     </div>
+    </form>
+{% endblock %}

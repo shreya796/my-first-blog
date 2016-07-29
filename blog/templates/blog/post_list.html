@@ -48,24 +48,7 @@
 
 
 <br>
-<br>
-<label>You are required to fill this form before moving ahead.</label>
-<form>
-<label>Enter your name&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label><input type= "text"/><br>
-<label>Enter your password&nbsp;</label><input type= "password"/><br>
-<label>Enter your email ID&nbsp;&nbsp;&nbsp;&nbsp;</label><input type= "text"/><br>
-<label>Enter your phone no&nbsp;&nbsp;</label><input type= "text"/><br>
- <input type ="radio" name="gender" value="male" checked>male</input>
-<input type ="radio" name="gender" value="female" >female</input>
 
-<!__alert box>
-<div>
-<button id="show" onclick="msg()">Submit</button>
-
-</div>
-</form>
-
-<br><progress ></progress>
 
 {%endblock%}
 
@@ -76,7 +59,8 @@
 
 {%block content%}
 {% for post in posts %}
-<ul style="list-style-type:square;">
+
+    <ul style="list-style-type:square;">
     <div class="post">
        
          <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
