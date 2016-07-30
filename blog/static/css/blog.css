@@ -117,6 +117,7 @@ h1 {
     font-size:x-large; 
     font-variant: small-caps;
     text-align: center;
+    font-family: 'Times New Roman'
 }
 
 table{
@@ -128,8 +129,8 @@ table{
 }
 
 #shop{
-    width:250px;
-    height:200px;
+    width:220px;
+    height:160px;
     border: outset;
 
 }
@@ -286,3 +287,9 @@ image hyperlink
 </form>
 
 <br><progress ></progress>  */
+
+
+
+/*{{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+        */

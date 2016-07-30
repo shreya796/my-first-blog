@@ -5,7 +5,7 @@
     <meta charset="utf-8" >
     <!__utf a unicode system only eg unicode- giving 4bytes to int in java __>
 
-        <title>{%block title%}ShopLanD{%endblock%}</title>
+        <title>{%block title%}Creativity unplugged{%endblock%}</title>
         <!__ below 2 are the bootstrap references __>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -68,26 +68,26 @@ function msg()
     
 </button>
 <a class="navbar-brand"
-   href="{%url 'post_list'%}"><span class="glyphicon glyphicon-shopping-cart">Items</span></a>
+   href="{%url 'post_list'%}"><span class="glyphicon glyphicon-spinner">Categories</span></a>
    </div>
    <div class="collapse navbar-collapse" id="topNavBar">
    <ul class= "nav navbar-nav">
    <li  class="active">
        <a href = "{%url 'post_list'%}">
-       <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;
-       Books
+       <span class="glyphicon glyphicon-envira" aria-hidden="true"></span>&nbsp;
+       Poetry
    </a>
    </li>
    <li  class="active">
        <a href = "">
-       <span class="glyphicon glyphicon-tumblr" aria-hidden="true"></span>&nbsp;
-       Tshirts
+       <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;
+       Literature
    </a>
    </li>
     <li  class="">
        <a href = "">
-       <span class="glyphicon glyphicon-pied-piper" aria-hidden="true"></span>&nbsp;
-       Shoes
+       <span class="glyphicon glyphicon-paragraph" aria-hidden="true"></span>&nbsp&nbsp;
+       Articles/Reviews
    </a>
    </li>
    </ul>
@@ -103,7 +103,7 @@ function msg()
  <li  class="">
        <a href = "{% url 'post_new'%}">
        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
-       Add product
+       Add post
    </a>
    </li>
     <li  class="">
@@ -117,14 +117,7 @@ function msg()
 </div>
     </div></nav>
 
-
-
-
 {%block part%}
-
-{%endblock%}
-
-
 
  <div class="content container">
         <div class="row">
@@ -143,6 +136,8 @@ function msg()
 
 
 
+
+{%endblock%}
 
 
 

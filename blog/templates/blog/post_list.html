@@ -14,8 +14,8 @@
 
 <div class="page-header">
 
-        <h1><a href="/">Welcome to ShopLand</a></h1>
-        {%if user.is_authenticated%}<!so that only the logged in user can edit>
+        <h1><a href="/">Welcome to the LitLand!</a></h1>
+        {%if user.is_authenticated%}
          <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {%endif%}
 
@@ -23,8 +23,24 @@
 
 
         
-<p> <h3 class="tagline">Customer satisfaction is our motto. </h3></p>
+<p> <h3 class="tagline">We admire creativity. </h3></p>
 <hr><br>
+
+
+{%block content%}
+{% for post in posts %}
+
+    <ul style="list-style-type:square;">
+    <div class="post">
+
+         <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
+
+
+    </div>
+    </ul>
+{% endfor %}
+{%endblock%}
+
 
 
 
@@ -34,22 +50,30 @@
 
 
 <!__DRAG AND DROP CODE >
-<p id="dragline" >Drag your favorite items into the cart !</p>
-<img id="todrag1" src="http://static1.jassets.com/p/Baggit-Gcch-Roxx-Andrew-Smoke-Wallet-7524-5535202-1-catalog_m.jpg" draggable="true" ondragstart="drag(event)">
-<img id="todrag2" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTOF5kMDlEF4ZaeikpWMLYa8L9KPpmmeD1eT5sipta8VECYJZoOaw"  draggable="true" ondragstart="drag(event)">
-
-<img id="todrag3" src="http://cdn.ndtv.com/tech/images/gadgets/asus-zenbook-pro-ux501.jpg"  draggable="true" ondragstart="drag(event)">
-<img id="todrag4" src="http://g04.a.alicdn.com/kf/HTB1eHAIKpXXXXaxXVXXq6xXFXXXX/New-2013-canvas-shoes-lady-canvas-shoes-1908.jpg_350x350.jpg"  draggable="true" ondragstart="drag(event)"  draggable="true" ondragstart="drag(event)">
+<p id="dragline" >Drag your areas of interest into the shelf. We'll take care of your choices.</p>
+<img id="todrag1" src="" draggable="true" ondragstart="drag(event)">
+<img id="todrag2" src=""  draggable="true" ondragstart="drag(event)">
+<img id="todrag3" src=""  draggable="true" ondragstart="drag(event)">
+<img id="todrag4" src=""  draggable="true" ondragstart="drag(event)"  draggable="true" ondragstart="drag(event)">
 
 </img><br><br>
-<div align="top-right">
-<div  ondrop="drop(event)" ondragover="allowDrop(event)"><img id="draginto" src="https://image.freepik.com/free-icon/shopping-cart-of-checkered-design_318-50865.png" />  </div>
+<div align="right">
+<div  ondrop="drop(event)" ondragover="allowDrop(event)"><img id="draginto" src="" />  </div>
 <!__ do not make Id of division, or it will create a block separately using that id styling.Make id of img  ></div>
 
 
 <br>
 
 
+
+<!image hyperlink>
+<div align="right">
+      <a href = "shreyagupta7wordpresscom.wordpress.com">
+      <img Id="shop" src="http://www.oxfordtoday.ox.ac.uk/sites/files/oxford/styles/ot_full_width/public/media_wysiwyg/Poetry%20MAIN.jpg?itok=LawREjSR" alt= "Poetryworld">
+      </a>
+      </div>
+
+
 {%endblock%}
 
 
@@ -57,19 +81,6 @@
 
 
 
-{%block content%}
-{% for post in posts %}
-
-    <ul style="list-style-type:square;">
-    <div class="post">
-       
-         <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
-      
-    
-    </div>
-    </ul>
-{% endfor %}
-{%endblock%}
 
 
  
