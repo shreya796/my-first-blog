@@ -162,13 +162,16 @@ def register(request):
         user.save()
         user = authenticate(username=username, password=password)
 
-    """
+
         if user is not None:
             if user.is_active:
                 login(request, user)
                 posts = Post.objects.filter(user=request.author)
+                #after they login we want to redirect them to homepg
                 return render(request, 'blog/post_list.html', {'posts': posts})
-    """
+            #if the din login, return that try again->here is a blank form for u
+        return render(request.self.template_name,{'form':form})
+
 
     context = {
         "form": form,
@@ -199,3 +202,16 @@ def post_publish(request, pk):
     post.publish()
     messages.success(request, "Post successfully published!")
     return redirect('blog.views.post_detail', pk=pk) #return redirect('blog.views.post_detail', pk=pk)
+
+
+@login_required
+def post_draft_list(request):
+    posts=Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request,'blog/post_draft_list.html',{'posts':posts})
+
+@login_required
+def post_remove(request,pk):
+    post=get_object_or_404(Post,pk=pk)
+    post.delete()
+    #messages.success(request, "Post was successfully deleted!")
+    return redirect('blog.views.post_list')

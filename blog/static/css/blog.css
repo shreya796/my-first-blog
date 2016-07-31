@@ -138,35 +138,37 @@ form{
  
 }
 #draginto{
-   width: 185px;
-    height:170px;
-    padding-right: 20px;
+   width: 180px;
+    height:180px;
+   /* padding-right: 20px;*/
    /*float: right;*/
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     } 
 
 #todrag1{
-    height:150px;
-    width: 150px;
+    height:180px;
+    width: 180px;
     float:left;
+
 }
 
 #todrag2{
-    height:130px;
-    width: 130px;
+    height:180px;
+    width: 180px;
     float:left;
+    
 }
 
 
 #todrag3{
-    height:160px;
-    width: 160px;
+    height:180px;
+    width: 180px;
     float:left;
 }
 
 #todrag4{
-    height:160px;
-    width: 160px;
+    height:150px;
+    width: 150px;
     float:left;
 }
 
