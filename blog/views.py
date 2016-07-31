@@ -4,7 +4,6 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect#redirect users to whatever page they want
-from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from .forms import UserForm, PostForm
 from django.views import generic
@@ -18,11 +17,48 @@ from django.conf import settings
 from django import http
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login
+
+def logout_view(request):
+    logout(request)
+    return HttpResponse("<h1>You are successfully logged out </h1>")
+
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                posts = Post.objects.all()
+                return render(request, 'blog/post_list.html', {'posts': posts})
+            else:
+                return render(request, 'blog/login.html', {'error_message': 'Your account has been disabled'})
+        else:
+            return render(request, 'blog/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'blog/login.html')
+
+
+
+
+
+
+
+
 
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+"""def post_list(request):
+    return HttpResponse("A read write platform")"""
+
+
 
 
 def post_detail(request, pk):
@@ -85,11 +121,6 @@ class PostDelete(DeleteView):
 
 
 
-class BlockedIPMiddleware(object):
-    def process_request(self, request):
-        if request.META['REMOTE_ADDR'] in settings.BLOCKED_IPS:
-            return http.HttpResponseForbidden('<h1>Forbidden</h1>')
-        return None
 
 
 
@@ -140,6 +171,7 @@ class UserFormView(View):
             user.set_password(password)
             user.save()
             user=authenticate(username=username,password=password)
+#authenticate returns user object if pass matches with the username
             if user is not None:
                 if user.is_active:
                     login(request,user)
@@ -179,23 +211,6 @@ def register(request):
     return render(request, 'blog/registration_form.html', context)
 
 
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                #login(request, user)
-                posts = Post.objects.all()
-                return render(request, 'blog/post_list.html', {'posts': posts})
-            else:
-                return render(request, 'blog/login.html', {'error_message': 'Your account has been disabled'})
-        else:
-            return render(request, 'blog/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'blog/login.html')
-
-
 @login_required
 def post_publish(request, pk):
     post=get_object_or_404(Post, pk=pk)
@@ -215,3 +230,4 @@ def post_remove(request,pk):
     post.delete()
     #messages.success(request, "Post was successfully deleted!")
     return redirect('blog.views.post_list')
+

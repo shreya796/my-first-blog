@@ -13,13 +13,11 @@
                         {%endif%}
 
 
-<form method="post" class="form-horizontal" role="form" action="" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+<form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">{% csrf_token %}
     {%include 'blog/form-template.html'%}
         <div class="form-group">
             <div class="col-sm-offset-2-col-sm-10">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success col col-md-3">Submit</button>
             </div>
                  </div>
                     </div>

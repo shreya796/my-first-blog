@@ -72,13 +72,13 @@ function msg()
    </div>
    <div class="collapse navbar-collapse" id="topNavBar">
    <ul class= "nav navbar-nav">
-   <li  class="active">
+   <li  class="">
        <a href = "{%url 'post_list'%}">
        <span class="glyphicon glyphicon-envira" aria-hidden="true"></span>&nbsp;
        Poetry
    </a>
    </li>
-   <li  class="active">
+   <li  class="">
        <a href = "">
        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;
        Literature
@@ -99,7 +99,7 @@ function msg()
    </form>
    <!_________________________________________________>
 
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right"> <!__navbar-nav for black color__>
  <li  class="">
        <a href = "{% url 'post_new'%}">
        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
@@ -107,11 +107,25 @@ function msg()
    </a>
    </li>
     <li  class="">
-       <a href = "">
+       <a href = "{% url 'logout_view' %}">
        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
        Logout
    </a>
+      </li>
+      <li  class="active">
+       <a href = "{% url 'register' %}">
+       <span class="glyphicon glyphicon-registered" aria-hidden="true"></span>&nbsp;
+       Register
+   </a>
    </li>
+
+    <li  class="active">
+       <a href = "{% url 'login_user' %}">
+       <span class="glyphicon glyphicon-hand-o-right" aria-hidden="true"></span>&nbsp;
+       Login
+   </a>
+   </li>
+
     <!__%block content%__>
     <li class="">
                                 <a href="{% url 'post_draft_list' %}"> <!--publish posts in draft-->
