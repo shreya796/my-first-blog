@@ -3,16 +3,19 @@
 
 
 {% block content %}
-    <div class="post">
+    <div class="postA">
         {% if post.published_date %}
             <div class="date">
              {{ post.published_date }} </p>
             </div>
         {% endif %}
-        {%if user.is_authenticated%} <!so that only the logged in user can edit post>
+        {%if user.is_authenticated%} 
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {%endif%}
         <h4>{{ post.title }}</h4>
         <p >{{ post.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
+
+
+<!so that only the logged in user can edit post>

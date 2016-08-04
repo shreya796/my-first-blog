@@ -14,8 +14,8 @@ class Post(models.Model):
     #image=models.FileField(null=True, blank=True)
 
 
-    def get_absolute_url(self):
-        return reverse('view:post_detail',kwargs={'pk':self.pk})
+    """def get_absolute_url(self):
+        return reverse('view:post_detail',kwargs={'pk':self.pk})"""
 
 
 

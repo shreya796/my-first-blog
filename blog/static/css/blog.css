@@ -1,3 +1,13 @@
+/*  <li class="">
+        <a href="{% url 'post_draft_list' %}"> <!--publish posts in draft-->
+           <span class="glyphicon glyphicon-edit"></span>&nbsp;
+           Pending Posts
+           </a>
+</li>*/
+
+
+
+
 /*h1.floating-box {
     float: left;
     width: 150px;
@@ -57,7 +67,7 @@ video{
     margin-right: 20px;
 }
 
-.post {
+.postA {
     margin-bottom: 70px;
 }
 

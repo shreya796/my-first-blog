@@ -4,12 +4,16 @@ from . import views
 
 #app_name='blog'
 
-
-
-urlpatterns = [
+urlpatterns =[
      url(r'^$', views.post_list, name='post_list'),
    url(r'^post/(?P<pk>\d+)/$', views.post_detail, name='post_detail'),
-    #here pk is used so that every page opened can have its own primary key
+
+     url(r'^post/(?P<pk>\d+)/$', views.post_poem, name='post_poem'),
+
+
+
+
+    #here pk is used so t\hat every page opened can have its own primary key
     #the pk is allotted by default
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
@@ -19,16 +23,25 @@ urlpatterns = [
 url(r'^register/$', views.register , name='register'),
 
         url(r'^logout_view/$', views.logout_view, name='logout_view'),
-   # url(r'^register/$', views.registration_form, name='register'),
+
     url(r'^login_user/$', views.login_user, name='login_user'),
 
     url(r'^post/(?P<pk>\d+)/publish/$', views.post_publish, name='post_publish'),
 
 
-url(r'^drafts/$',views.post_draft_list,name='post_draft_list'),
+#url(r'^drafts/$',views.post_draft_list,name='post_draft_list'),
 
 url(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),
 ]
+
+
+
+
+
+
+
+
+
 
 
 

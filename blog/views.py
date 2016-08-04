@@ -20,6 +20,8 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 
+
+
 def logout_view(request):
     logout(request)
     return HttpResponse("<h1>You are successfully logged out </h1>")
@@ -47,6 +49,10 @@ def login_user(request):
 
 
 
+def post_poem(request,pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail2.html', {'post': post}, )
+
 
 
 
@@ -61,7 +67,10 @@ def post_list(request):
 
 
 
-def post_detail(request, pk):
+
+# return redirect(request, 'blog/post_detail2.html', {'post': post})
+
+def post_detail(request, pk):  #matches url of type post/2005
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
@@ -94,6 +103,8 @@ def post_edit(request, pk):
 
 
 #------------------------------------------------------------------
+
+"""
 class Indexview(generic.ListView):
     template_name = 'templates/blog/post_list.html'
 
@@ -119,37 +130,11 @@ class PostDelete(DeleteView):
     model=Post
     success_url = reverse_lazy('blog:post_list')
 
-
-
-
-
-
-
-def add_comment(request,pk):
-    """
-    comments = Comment.objects.order_by('created_date')
-    #.filter(created_date__lte=timezone.now())
-    return render(request,'blog/comments.html',{'comments':comments})
-    """
-    post=get_object_or_404(Post,pk=pk)
-    if request.method == 'POST':
-        form=CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect('blog.views.post_detail',pk=post.pk)
-    else:
-        form = CommentForm()
-
-    return render(request, 'blog/comments.html', {'form': form})
-
-
-
-#----------------------------------------------------------
-
 #UserForm is the Form blueprint we created in forms.py
 #View in bracket means userformview inherits from view
+
+
+
 class UserFormView(View):
     form_class=UserForm
     template_name="blog/registration_form.html"
@@ -178,8 +163,35 @@ class UserFormView(View):
                     return redirect('blog:post_list')
         return render(request.self.template_name,{'form':form})
 
+"""
+#-----------------------------------------------------------------------------------------------------------------
 
 
+
+"""
+    comments = Comment.objects.order_by('created_date')
+    #.filter(created_date__lte=timezone.now())
+    return render(request,'blog/comments.html',{'comments':comments})
+    """
+
+"""
+def add_comment(request,pk):
+
+    post=get_object_or_404(Post,pk=pk)
+    if request.method == 'POST':
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('blog.views.post_detail',pk=post.pk)
+    else:
+        form = CommentForm()
+
+    return render(request, 'blog/comments.html', {'form': form})
+
+
+"""
 
 
 
@@ -205,7 +217,7 @@ def register(request):
         return render(request.self.template_name,{'form':form})
 
 
-    context = {
+    context ={
         "form": form,
     }
     return render(request, 'blog/registration_form.html', context)
