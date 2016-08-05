@@ -19,17 +19,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
-
+from django.db.models import Q
 
 
 
 
 def post_poem(request,pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail2.html', {'post': post},pk=post.pk )
-
-
-
+    return render(request, 'blog/post_detail2.html', {'post': post})
 
 
 
@@ -59,11 +56,23 @@ def login_user(request):
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+
 
     query=request.GET.get("q")
     if query:
-        queryset_list=queryset_list.filter(title__icontains=query)  #filter means show this item only which is in query
+        #queryset_list=queryset_list.filter, cant use queryset as queryset is empty
+        posts = posts.filter(
+            Q(title__icontains=query)|
+            Q(text__icontains=query)|
+            Q(author__first_name__icontains=query)
+            ).distinct()
+
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+
+
+
+#filter means show this item only which is in query
 
 
 

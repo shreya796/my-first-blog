@@ -1,4 +1,4 @@
-<!way of writing a for loop in html, posts is the instance created in views.py, post is the variable >
+<!way of writing a for loop in html, posts is the instance created in views.py, post is the random variable of this file >
 
              <!__to print a variable- this syntax. post is also the instance created in the python shell while publishing the post __>
         <!__ end of for loop __>
@@ -15,11 +15,15 @@
 <div class="page-header">
 
     {%comment search bar%}
-    <form method="GET" action = " " >
-        <input type="text" placeholder="Search posts" name="q" value="{{request.GET.q}}"/>
-        <input type="submit" value="Search">
+  <form method='GET' action = '' >
+        <input type='text' placeholder='Search posts' name='q' value='{{request.GET.q}}'/>
+        <input type='submit' value='Search'>
         </form>
- {%endcomment%}
+     {%endcomment%}
+
+
+
+
 
 
         <h1><a href="/">Welcome to the LitLand!</a></h1>
@@ -45,10 +49,16 @@
          <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
 
 
+
     </div>
     </ul>
 {% endfor %}
 {%endblock%}
+
+
+
+
+
 
 
 <!__use a name attribute in all options which has to be the same, and make one of the values of name checked> <br>
