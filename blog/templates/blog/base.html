@@ -56,15 +56,13 @@ function msg()
 
 
     {%comment%}
-
     <body data-spy="scroll" data-target="#myScrollspy" data-offset="20" >
-    <ul class= "nav navbar-nav"  class="nav nav-pills nav-stacked">   <!__so that tabs come in pill forms >
-
+    <ul class= "nav navbar-nav"  class="nav nav-pills nav-stacked">   so that tabs come in pill forms
     {%endcomment%}
 
 
 
-<body >
+<body>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -75,14 +73,17 @@ function msg()
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<!__ https://developers.facebook.com/docs/plugins/comments__>
+{%comment%}
 
+https://developers.facebook.com/docs/plugins/comments
+for a particular design of navigation bar
+inverse, primary , info , default - 4 conceptual color classes available for navigation bar
+
+{%endcomment%}
 
 
 <nav class="navbar navbar-inverse"  id="myScrollspy">
-<div class="container-fluid"> <!__for a particular design of navigation bar__>
-
-
+<div class="container-fluid">
 <div class="navbar-header"> <!__for categories __>
 
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -104,11 +105,15 @@ function msg()
    <div class="collapse navbar-collapse" id="topNavBar">
        <ul class= "nav navbar-nav">
 
-   <li  class="">
-       {% for post in posts %}
 
-       <a href = "{% url 'post_poem' pk=post.pk %}">
-           {% endfor %}
+
+   <li  class="">
+{%comment%}
+       {% for post in posts %}
+       {% url 'post_poem' pk=post.pk %}
+       {%%endfor}
+      {%endcomment%}
+<a href =" ">
        <span class="glyphicon glyphicon-envira" aria-hidden="true"></span>&nbsp;
        Poetry
    </a>   </li>
@@ -117,15 +122,22 @@ function msg()
 
    <li  class="">
        <a href = "   ">
+       
        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;
-       Literature
+       &nbsp;&nbsp;Literature
+
    </a>
    </li>
 
     <li  class="">
+
        <a href = "   ">
-       <span class="glyphicon glyphicon-paragraph" aria-hidden="true"></span>&nbsp;&nbsp;
-       Articles/Reviews
+
+           <span class="glyphicon glyphicon-paragraph" aria-hidden="true"></span>&nbsp;&nbsp;
+       &nbsp;&nbsp;Articles/Reviews
+
+
+
    </a>
    </li>
 
@@ -146,7 +158,7 @@ function msg()
    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" >&nbsp;Search</span></button>
    </form>
 
-
+<br>
 <ul class="nav navbar-nav navbar-right"   > <!__inverse is for black__>
  <li  class="">
        <a href = "{% url 'post_new'%}">

@@ -1,9 +1,11 @@
+#from .forms import CategoryForm
+
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
+from .models import Post ,Category
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
-from django.shortcuts import redirect#redirect users to whatever page they want
+from django.shortcuts import redirect               #redirect users to whatever page they want
 from django.views.generic import View
 from .forms import UserForm, PostForm
 from django.views import generic

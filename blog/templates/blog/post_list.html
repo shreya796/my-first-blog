@@ -41,45 +41,48 @@
 
 
 {%block content%}
+<marquee direction="up" scrolldelay=0.1 scrollamount="10">
+
 {% for post in posts %}
 
     <ul style="list-style-type:square;">
     <div class="postA">
 
          <li> <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></li>
-
-
-
     </div>
     </ul>
 {% endfor %}
+ </marquee>
 {%endblock%}
 
 
-
-
-
-
-
-<!__use a name attribute in all options which has to be the same, and make one of the values of name checked> <br>
-
-
+<!__use a 'name' attribute in all options which has to be the same, and make one of the values of name checked> <br>
 
 
 <!__DRAG AND DROP CODE >
 <p id="dragline" >Drag your areas of interest into the shelf. We'll take care of your choices.</p>
-<marquee scrolldelay=2 scrollamount=".01">
-<img id="todrag1" src="http://kenyanpoet.com/wp-content/uploads/2016/05/poetry-in-garden-web11.jpg" draggable="true" ondragstart="drag(event)"> 
+
+<!scroll amount increases the speed, more is the scroll amount more is the speed>
+
+
+
+
+    <img id="todrag1" src="http://www.oxfordtoday.ox.ac.uk/sites/files/oxford/styles/ot_full_width/public/media_wysiwyg/Poetry%20MAIN.jpg?itok=LawREjSR" draggable="true" ondragstart="drag(event)" class="img-circle">
 &nbsp;&nbsp;
-<img id="todrag2" src="https://www.seoclerk.com/pics/trade3926-1WCVWS1456854270.jpg"  draggable="true" ondragstart="drag(event)">
+
+    <img id="todrag2" src="http://www.easycppcodes.com/wp-content/uploads/2015/02/C-Articles.gif"  draggable="true" ondragstart="drag(event)" class="img-circle">
 &nbsp;&nbsp;
-<img id="todrag3" src="http://freevideolectures.com/course_images/thumb/Masterpieces%20of%20British%20Literature%20from%20the%20Eighteenth%20Century1442813044.jpg"  draggable="true" ondragstart="drag(event)">
- </marquee>
-<!img id="todrag4" src=""  draggable="true" ondragstart="drag(event)"  draggable="true" ondragstart="drag(event)">
+
+    <img id="todrag3" src="http://2.bp.blogspot.com/-qhvqtZg_h98/T1LXHV-UfTI/AAAAAAAACJQ/tCgU2yoJqBo/s1600/Imagem+Literatura.jpg"  draggable="true" ondragstart="drag(event)" class="img-circle">
+
+    &nbsp;&nbsp;
+
+    <img id="todrag4" src="http://www.tckpublishing.com/wp-content/uploads/2014/02/book-reviews-image.jpg"  draggable="true" ondragstart="drag(event)"  draggable="true" ondragstart="drag(event)" class="img-circle">
+
 
 </img>
 <div align="right">
-<div  ondrop="drop(event)" ondragover="allowDrop(event)"><img id="draginto" src="http://cdn.home-designing.com/wp-content/uploads/2013/03/Solovyoc-Designs-pinta-book-shelf.jpg" />  </div>
+<div  ondrop="drop(event)" ondragover="allowDrop(event)"><img id="draginto" src="http://cdn.home-designing.com/wp-content/uploads/2013/03/Solovyoc-Designs-pinta-book-shelf.jpg"  class="img-thumbnail"/>  </div>
 <!__ do not make Id of division, or it will create a block separately using that id styling.Make id of img  ></div>
 
 
@@ -89,13 +92,13 @@
 <br>
 
 <!image hyperlink>
-<div align="right">
-    <br><br>
-      <a href = "shreyagupta7wordpresscom.wordpress.com">
-    <marquee> <img Id="shop" src="http://www.oxfordtoday.ox.ac.uk/sites/files/oxford/styles/ot_full_width/public/media_wysiwyg/Poetry%20MAIN.jpg?itok=LawREjSR" alt= "Poetryworld"></a></marquee>
+<div align="center">
+    <br>
 
-<br>
+   <br>
     <p><div class="fb-like" data-href="{{request.build_absolute_url}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+    <!__ for fb like button __>
 </p>
 
 

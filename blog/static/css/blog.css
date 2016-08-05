@@ -83,7 +83,7 @@ h4{
         font-weight: bold;
         font-family: 'Georgia';
         font-style: italic;
-        font-size: 40px;
+        font-size: 30px;
         text-align: justify;
         /* Css style will overwrite the size h4. Moreover advantage of h4 is we can access the post title */
 }
@@ -113,7 +113,7 @@ h1 {
 	color: blue;
 	text-align: center;	
 	font-style: normal;
-	font-size: 90px;
+	font-size: 70px;
 	font-weight: bold;
 }
 
@@ -121,13 +121,13 @@ h1 {
 .tagline{
     background:black;
     color:white;
-    height: 30px;
+    height: 35px;
     width: 600px;
-    font-style: bold;
-    font-size:x-large; 
+    font-weight: bold;
+    font-size:30px; 
     font-variant: small-caps;
     text-align: center;
-    font-family: 'Times New Roman'
+    font-family: 'Lucida Sans Unicode'
 }
 
 table{
@@ -139,8 +139,8 @@ table{
 }
 
 #shop{
-    width:220px;
-    height:160px;
+    width:650px;
+    height:220px;
     border: outset;
 
 }
@@ -156,29 +156,29 @@ form{
     } 
 
 #todrag1{
-    height:180px;
-    width: 180px;
+    height:260px;
+    width: 290px;
     float:left;
 
 }
 
 #todrag2{
-    height:180px;
-    width: 180px;
+    height:260px;
+    width: 290px;
     float:left;
     
 }
 
 
 #todrag3{
-    height:180px;
-    width: 180px;
+    height:260px;
+    width: 290px;
     float:left;
 }
 
 #todrag4{
-    height:150px;
-    width: 150px;
+    height:260px;
+    width: 260px;
     float:left;
 }
 
