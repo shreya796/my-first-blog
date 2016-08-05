@@ -22,6 +22,17 @@ from django.contrib.auth import authenticate, login
 
 
 
+
+
+def post_poem(request,pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail2.html', {'post': post},pk=post.pk )
+
+
+
+
+
+
 def logout_view(request):
     logout(request)
     return HttpResponse("<h1>You are successfully logged out </h1>")
@@ -46,25 +57,20 @@ def login_user(request):
 
 
 
-
-
-
-def post_poem(request,pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail2.html', {'post': post}, )
-
-
-
-
-
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+    query=request.GET.get("q")
+    if query:
+        queryset_list=queryset_list.filter(title__icontains=query)  #filter means show this item only which is in query
+
+
+
+
+
 """def post_list(request):
     return HttpResponse("A read write platform")"""
-
-
 
 
 
@@ -74,18 +80,34 @@ def post_detail(request, pk):  #matches url of type post/2005
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
+
+#means only staff or admin users can chnge the stuff
+
+""" if request.user.is_staff or request.user.is_superuser:
+        raise Http404
+
+    if not request.user.is_authenticated():
+        raise Http404"""
+
 def post_new(request):
+
+
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            #post.user = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
+
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -102,7 +124,100 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
+
+def register(request):
+    form = UserForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user.set_password(password)
+        user.save()
+        user = authenticate(username=username, password=password)
+
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                posts = Post.objects.filter(user=request.author)
+                #after they login we want to redirect them to homepg
+                return render(request, 'blog/post_list.html', {'posts': posts})
+            #if the din login, return that try again->here is a blank form for u
+        return render(request.self.template_name,{'form':form})
+
+
+    context ={
+        "form": form,
+    }
+    return render(request, 'blog/registration_form.html', context)
+
+#a decorator to ensure that for this function to execute login is required
+
+
+
+
+
+"""
+def post_draft_list(request):
+    posts=Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request,'blog/post_draft_list.html',{'posts':posts})
+
+
+
+def add_comment(request,pk):
+
+    post=get_object_or_404(Post,pk=pk)
+    if request.method == 'POST':
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('blog.views.post_detail',pk=post.pk)
+    else:
+        form = CommentForm()
+
+    return render(request, 'blog/comments.html', {'form': form})
+
+
+
+
+@login_required
+def post_publish(request, pk):
+    post=get_object_or_404(Post, pk=pk)
+    post.publish()
+    messages.success(request, "Post successfully published!")
+    return redirect('blog.views.post_detail', pk=pk) #return redirect('blog.views.post_detail', pk=pk)
+
+
+
+@login_required
+def post_remove(request,pk):
+    post=get_object_or_404(Post,pk=pk)
+    post.delete()
+    #messages.success(request, "Post was successfully deleted!")
+    return redirect('blog.views.post_list')
+
+
+    """
+
+
+
+
+
+
+#-------------------------------------------------------------------------------------------
+
 #------------------------------------------------------------------
+
+"""
+    comments = Comment.objects.order_by('created_date')
+    #.filter(created_date__lte=timezone.now())
+    return render(request,'blog/comments.html',{'comments':comments})
+    """
+
+
+
 
 """
 class Indexview(generic.ListView):
@@ -168,78 +283,5 @@ class UserFormView(View):
 
 
 
-"""
-    comments = Comment.objects.order_by('created_date')
-    #.filter(created_date__lte=timezone.now())
-    return render(request,'blog/comments.html',{'comments':comments})
-    """
 
-"""
-def add_comment(request,pk):
-
-    post=get_object_or_404(Post,pk=pk)
-    if request.method == 'POST':
-        form=CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect('blog.views.post_detail',pk=post.pk)
-    else:
-        form = CommentForm()
-
-    return render(request, 'blog/comments.html', {'form': form})
-
-
-"""
-
-
-
-
-def register(request):
-    form = UserForm(request.POST or None)
-    if form.is_valid():
-        user = form.save(commit=False)
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user.set_password(password)
-        user.save()
-        user = authenticate(username=username, password=password)
-
-
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                posts = Post.objects.filter(user=request.author)
-                #after they login we want to redirect them to homepg
-                return render(request, 'blog/post_list.html', {'posts': posts})
-            #if the din login, return that try again->here is a blank form for u
-        return render(request.self.template_name,{'form':form})
-
-
-    context ={
-        "form": form,
-    }
-    return render(request, 'blog/registration_form.html', context)
-
-
-@login_required
-def post_publish(request, pk):
-    post=get_object_or_404(Post, pk=pk)
-    post.publish()
-    messages.success(request, "Post successfully published!")
-    return redirect('blog.views.post_detail', pk=pk) #return redirect('blog.views.post_detail', pk=pk)
-
-
-@login_required
-def post_draft_list(request):
-    posts=Post.objects.filter(published_date__isnull=True).order_by('created_date')
-    return render(request,'blog/post_draft_list.html',{'posts':posts})
-
-@login_required
-def post_remove(request,pk):
-    post=get_object_or_404(Post,pk=pk)
-    post.delete()
-    #messages.success(request, "Post was successfully deleted!")
-    return redirect('blog.views.post_list')
 

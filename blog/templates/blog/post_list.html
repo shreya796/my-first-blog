@@ -1,9 +1,26 @@
+<!way of writing a for loop in html, posts is the instance created in views.py, post is the variable >
+
+             <!__to print a variable- this syntax. post is also the instance created in the python shell while publishing the post __>
+        <!__ end of for loop __>
+
+        <!__ by div tag the post names have appeared in separate lines  __>
+
+
+
 {%extends 'blog/base.html' %}
 
 
 {%block part%}
 
 <div class="page-header">
+
+    {%comment search bar%}
+    <form method="GET" action = " " >
+        <input type="text" placeholder="Search posts" name="q" value="{{request.GET.q}}"/>
+        <input type="submit" value="Search">
+        </form>
+ {%endcomment%}
+
 
         <h1><a href="/">Welcome to the LitLand!</a></h1>
         {%if user.is_authenticated%}
@@ -63,12 +80,16 @@
 
 <!image hyperlink>
 <div align="right">
-      <a href = "#">
-    <marquee> <img Id="shop" src="http://www.oxfordtoday.ox.ac.uk/sites/files/oxford/styles/ot_full_width/public/media_wysiwyg/Poetry%20MAIN.jpg?itok=LawREjSR" alt= "Poetryworld">
-      </a></marquee>
-      </div>
+    <br><br>
+      <a href = "shreyagupta7wordpresscom.wordpress.com">
+    <marquee> <img Id="shop" src="http://www.oxfordtoday.ox.ac.uk/sites/files/oxford/styles/ot_full_width/public/media_wysiwyg/Poetry%20MAIN.jpg?itok=LawREjSR" alt= "Poetryworld"></a></marquee>
+
+<br>
+    <p><div class="fb-like" data-href="{{request.build_absolute_url}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+</p>
 
 
+ </div>
 {%endblock%}
 
 

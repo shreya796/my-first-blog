@@ -31,8 +31,8 @@
 
 title
 {
-    color:red;
-    font-style: bold;
+    color: red;
+    font-weight: bold;
 }
 
 body{
@@ -89,9 +89,9 @@ h4{
 }
 
 p{
-    color: brown;
+        color: brown;
         font-weight: bold;
-        font-family: 'comic sans Ms';
+        font-family: 'Comic sans Ms';
         font-style: italic;
         font-size: 20px;
         text-align: justify;

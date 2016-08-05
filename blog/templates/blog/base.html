@@ -54,7 +54,23 @@ function msg()
 </head> 
 <!__Nav bar__>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="20" >
+
+    {%comment%}
+
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="20" >
+    {%endcomment%}
+<body >
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!__ https://developers.facebook.com/docs/plugins/comments__>
 
 
 
@@ -84,9 +100,13 @@ function msg()
 
 
 
+           {%comment %}
+           {%url 'post_poem '%}
+           {%endcomment%}
+
    <li  class="active">
 
-       <a href = "{%url ' post_poem '%}">
+       <a href = "">
        <span class="glyphicon glyphicon-envira" aria-hidden="true"></span>&nbsp;
        Poetry
    </a>
@@ -122,7 +142,7 @@ function msg()
 
    <form class="navbar-form navbar-left" role="search" method="get" action="#" >
    <div class="form-group">
-   <input type="text" class="form-control" name="q" value="">
+   <input type="text" class="form-control" name="q" placeholder="Search posts" value="{{request.GET.q}}">
    </div>
    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" >&nbsp;Search</span></button>
    </form>
@@ -167,18 +187,18 @@ function msg()
 
 
 
+{%comment "bootstrap autoscrollspy tag"%}
+
 
      <div class="col-sm-9">
       <div id="section1">
         <h1>Moments</h1>
-        <pre>
-
-
-
-
-Shreya Gupta
+        <pre>Shreya Gupta
 </pre>
       </div>
+
+
+         {%endcomment%}
 
  <!__ by enclosing above in navigation bar,  whole poem has come under nav bar __>
 
@@ -187,22 +207,7 @@ Shreya Gupta
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{%block part%}
+         {%block part%}
 
  <div class="content container">
         <div class="row">
