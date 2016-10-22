@@ -43,6 +43,8 @@
 {%block content%}
 <marquee direction="up" scrolldelay=0.1 scrollamount="10">
 
+	
+	{%comment tocheck %}
 {% for post in posts %}
 
     <ul style="list-style-type:square;">
@@ -52,6 +54,8 @@
     </div>
     </ul>
 {% endfor %}
+	
+	{%endcomment%}
  </marquee>
 {%endblock%}
 
