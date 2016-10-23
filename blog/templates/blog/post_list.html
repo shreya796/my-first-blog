@@ -44,7 +44,7 @@
 <marquee direction="up" scrolldelay=0.1 scrollamount="10">
 
 	
-	{%comment tocheck %}
+	{%comment tocheck %}{%endcomment%}
 {% for post in posts %}
 
     <ul style="list-style-type:square;">
@@ -55,7 +55,7 @@
     </ul>
 {% endfor %}
 	
-	{%endcomment%}
+	
  </marquee>
 {%endblock%}
 
